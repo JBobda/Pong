@@ -9,8 +9,8 @@ Application::Application(std::string title, int width, int height){
             sf::Vector2i(
                 sf::VideoMode::getDesktopMode().width/2 - window->getSize().x/2
                 ,sf::VideoMode::getDesktopMode().height/2 - window->getSize().y/2));
-    playerOne = new Player(20, 100, Player::Position::LEFT);
-    playerTwo = new Player(20, 100, Player::Position::RIGHT);
+    playerOne = new Player(20, 100, Position::LEFT);
+    playerTwo = new Player(20, 100, Position::RIGHT);
 
     players.push_back(*playerOne);
     players.push_back(*playerTwo);
@@ -42,6 +42,6 @@ void Application::draw(std::vector<Player> players){
 void Application::update(){
     inputHandler->input();
     for(int i = 0; i < players.size(); i++){
-        players[i].update();
+        players[i].update(*inputHandler);
     }
 }

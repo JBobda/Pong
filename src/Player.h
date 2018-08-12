@@ -3,17 +3,26 @@
 
 #include <SFML/Graphics.hpp>
 
+#include "InputHandler.h"
+
+enum Position{
+    RIGHT,
+    LEFT
+};
+
 class Player{
     private:
         sf::RectangleShape* paddle;
+        Position position;
+        int width;
+        int height;
+        int xPos;
+        int yPos;
+        int xVelocity;
+        int yVelocity;
     public:
-        enum Position{
-            RIGHT,
-            LEFT
-        };
-
         Player(int width, int height, Position position);
-        void update();
+        void update(InputHandler& inputHandler);
         void draw(sf::RenderWindow& window);
 
         

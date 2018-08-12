@@ -1,4 +1,5 @@
 #include "InputHandler.h"
+#include <iostream>
 
 InputHandler::InputHandler(){
     //Player One Controls
