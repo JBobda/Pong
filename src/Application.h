@@ -2,23 +2,26 @@
 #define APPLICATION_H
 
 #include <SFML/Graphics.hpp>
-#include "Player.h"
 #include <string>
 #include <vector>
+
+#include "Player.h"
+#include "InputHandler.h"
 
 class Application{
     private:
         sf::RenderWindow* window;
+        InputHandler* inputHandler;
         Player* playerOne;
         Player* playerTwo;
 
-        std::vector<Player*> players;
+        std::vector<Player> players;
     public:
         Application(std::string title, int width, int height);
 
         void run();
         void update();
-        void draw(std::vector<Player*> players);
+        void draw(std::vector<Player> players);
 };
 
-#endif
+#endif //APPLICATION_H

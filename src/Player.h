@@ -19,4 +19,4 @@ class Player{
         
 };
 
-#endif 
+#endif //PLAYER_H
