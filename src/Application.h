@@ -7,6 +7,7 @@
 
 #include "Player.h"
 #include "InputHandler.h"
+#include "Ball.h"
 
 class Application{
     private:
@@ -14,6 +15,7 @@ class Application{
         InputHandler* inputHandler;
         Player* playerOne;
         Player* playerTwo;
+        Ball* ball;
 
         std::vector<Player> players;
     public:

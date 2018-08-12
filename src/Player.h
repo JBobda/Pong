@@ -16,10 +16,10 @@ class Player{
         Position position;
         int width;
         int height;
-        int xPos;
-        int yPos;
-        int xVelocity;
-        int yVelocity;
+        float xPos;
+        float yPos;
+        float xVelocity;
+        float yVelocity;
     public:
         Player(int width, int height, Position position);
         void update(InputHandler& inputHandler);

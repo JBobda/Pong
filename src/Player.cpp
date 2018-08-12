@@ -6,8 +6,8 @@ Player::Player(int width, int height, Position position){
     this->position = position;
     this->width = width;
     this->height = height;
-    xVelocity = 10;
-    yVelocity = 10;
+    xVelocity = 0.65f;
+    yVelocity = 0.65f;
 
     if(position == Position::LEFT){
         xPos = 0;

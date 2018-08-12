@@ -11,6 +11,7 @@ Application::Application(std::string title, int width, int height){
                 ,sf::VideoMode::getDesktopMode().height/2 - window->getSize().y/2));
     playerOne = new Player(20, 100, Position::LEFT);
     playerTwo = new Player(20, 100, Position::RIGHT);
+    ball = new Ball(20,20);
 
     players.push_back(*playerOne);
     players.push_back(*playerTwo);
@@ -21,10 +22,9 @@ void Application::run(){
     while(window->isOpen()){
         sf::Event event;
         while(window->pollEvent(event)){
-            if(event.type == sf::Event::Closed) window->close();
-            update();
+            if(event.type == sf::Event::Closed) window->close();  
         }
-
+        update();
         window->clear();
         draw(players);
         window->display();
@@ -36,6 +36,7 @@ void Application::draw(std::vector<Player> players){
     for(int i = 0; i < players.size(); i++){
         players[i].draw(*window);
     }
+    ball->draw(*window);
 }
 
 //This function updates all of the positions of the game using input
@@ -44,4 +45,5 @@ void Application::update(){
     for(int i = 0; i < players.size(); i++){
         players[i].update(*inputHandler);
     }
+    ball->update();
 }
