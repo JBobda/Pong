@@ -21,7 +21,7 @@ Player::Player(int width, int height, Position position){
 }
 
 Player::~Player(){
-
+    delete paddle;
 }
 
 //This Function updates the players position based on input

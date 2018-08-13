@@ -15,6 +15,8 @@ InputHandler::InputHandler(){
         bool rightTyped = false;
 }
 
+InputHandler::~InputHandler(){}
+
 void InputHandler::input(){
     //Player One Controls
     //Up

@@ -20,6 +20,14 @@ Application::Application(std::string title, int width, int height){
     
 }
 
+Application::~Application(){
+    delete window;
+    delete inputHandler;
+    delete playerOne;
+    delete playerTwo;
+    delete ball;
+}
+
 //The main game loop of the program when this function exits, the program ends
 void Application::run(){
     while(window->isOpen()){

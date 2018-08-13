@@ -18,6 +18,7 @@ class InputHandler{
         bool rightTyped;
     public:
         InputHandler();
+        ~InputHandler();
         void input();
 
 };

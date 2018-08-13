@@ -13,7 +13,7 @@ Ball::Ball(int width, int height){
 }
 
 Ball::~Ball(){
-
+    delete ball;
 }
 
 void Ball::update(InputHandler& inputHandler){

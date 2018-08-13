@@ -21,7 +21,7 @@ class Application{
         std::vector<GameObject*> gameObjects;
     public:
         Application(std::string title, int width, int height);
-
+        ~Application();
         void run();
         void update();
         void draw();
