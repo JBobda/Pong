@@ -13,8 +13,11 @@ Application::Application(std::string title, int width, int height){
     playerTwo = new Player(20, 100, Position::RIGHT);
     ball = new Ball(20,20);
 
-    players.push_back(*playerOne);
-    players.push_back(*playerTwo);
+
+    gameObjects.push_back(playerOne);
+    gameObjects.push_back(playerTwo);
+    gameObjects.push_back(ball);
+    
 }
 
 //The main game loop of the program when this function exits, the program ends
@@ -26,24 +29,23 @@ void Application::run(){
         }
         update();
         window->clear();
-        draw(players);
+        draw();
         window->display();
     }
-}
-
-//This function draws objects to the screen
-void Application::draw(std::vector<Player> players){
-    for(int i = 0; i < players.size(); i++){
-        players[i].draw(*window);
-    }
-    ball->draw(*window);
 }
 
 //This function updates all of the positions of the game using input
 void Application::update(){
     inputHandler->input();
-    for(int i = 0; i < players.size(); i++){
-        players[i].update(*inputHandler);
+    for(int i = 0; i < gameObjects.size(); i++){
+        gameObjects[i]->update(*inputHandler);
     }
-    ball->update();
 }
+
+//This function draws objects to the screen
+void Application::draw(){
+    for(int i = 0; i < gameObjects.size(); i++){
+        gameObjects[i]->draw(*window);
+    }
+}
+

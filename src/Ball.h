@@ -3,7 +3,9 @@
 
 #include <SFML/Graphics.hpp>
 
-class Ball{
+#include "GameObject.h"
+
+class Ball : public GameObject{
     private:
         sf::RectangleShape* ball;
         int width;
@@ -14,8 +16,9 @@ class Ball{
         float yVelocity;
     public:
         Ball(int width, int height);
-        void update();
-        void draw(sf::RenderWindow& window);
+        ~Ball();
+        void update(InputHandler& inputHandler) override;
+        void draw(sf::RenderWindow& window) override;
         bool inBounds(float start, float max, float add, float min);
         
 

@@ -4,13 +4,14 @@
 #include <SFML/Graphics.hpp>
 
 #include "InputHandler.h"
+#include "GameObject.h"
 
 enum Position{
     RIGHT,
     LEFT
 };
 
-class Player{
+class Player : public GameObject{
     private:
         sf::RectangleShape* paddle;
         Position position;
@@ -22,8 +23,9 @@ class Player{
         float yVelocity;
     public:
         Player(int width, int height, Position position);
-        void update(InputHandler& inputHandler);
-        void draw(sf::RenderWindow& window);
+        ~Player();
+        void update(InputHandler& inputHandler) override;
+        void draw(sf::RenderWindow& window) override;
 
         
 };

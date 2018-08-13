@@ -12,7 +12,11 @@ Ball::Ball(int width, int height){
     yVelocity = 0.15f;
 }
 
-void Ball::update(){
+Ball::~Ball(){
+
+}
+
+void Ball::update(InputHandler& inputHandler){
     if(inBounds(xPos, 1000-width, xVelocity, 0)) xVelocity *= 1;
     else{
         if(xVelocity < 0) xVelocity -= 0.05f;

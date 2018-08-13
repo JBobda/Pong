@@ -20,9 +20,8 @@ Player::Player(int width, int height, Position position){
     }
 }
 
-//This function draws the Player to the window that is provided
-void Player::draw(sf::RenderWindow& window){
-    window.draw(*paddle);
+Player::~Player(){
+
 }
 
 //This Function updates the players position based on input
@@ -51,4 +50,9 @@ void Player::update(InputHandler& inputHandler){
     }
 
     paddle->setPosition(sf::Vector2f(xPos, yPos));
+}
+
+//This function draws the Player to the window that is provided
+void Player::draw(sf::RenderWindow& window){
+    window.draw(*paddle);
 }

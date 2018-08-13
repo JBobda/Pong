@@ -8,22 +8,23 @@
 #include "Player.h"
 #include "InputHandler.h"
 #include "Ball.h"
+#include "GameObject.h"
 
 class Application{
     private:
         sf::RenderWindow* window;
         InputHandler* inputHandler;
-        Player* playerOne;
-        Player* playerTwo;
-        Ball* ball;
+        GameObject* playerOne;
+        GameObject* playerTwo;
+        GameObject* ball;
 
-        std::vector<Player> players;
+        std::vector<GameObject*> gameObjects;
     public:
         Application(std::string title, int width, int height);
 
         void run();
         void update();
-        void draw(std::vector<Player> players);
+        void draw();
 };
 
 #endif //APPLICATION_H
