@@ -1,8 +1,8 @@
 #include "Player.h"
 #include <iostream>
 //This is the constructor that creates the players and positions them
-Player::Player(int width, int height, Position position){
-    paddle = new sf::RectangleShape(sf::Vector2f(width, height));
+Player::Player(float width, float height, Position position)
+    :paddle({width, height}){
     this->position = position;
     this->width = width;
     this->height = height;
@@ -12,17 +12,15 @@ Player::Player(int width, int height, Position position){
     if(position == Position::LEFT){
         xPos = 0;
         yPos = 250;
-        paddle->setPosition(0, 250);
+        paddle.setPosition(0, 250);
     }else{
         xPos = 1000-width;
         yPos = 250;
-        paddle->setPosition(1000-width, 250);
+        paddle.setPosition(1000-width, 250);
     }
 }
 
-Player::~Player(){
-    delete paddle;
-}
+Player::~Player(){}
 
 //This Function updates the players position based on input
 void Player::update(InputHandler& inputHandler){
@@ -49,10 +47,14 @@ void Player::update(InputHandler& inputHandler){
             break;
     }
 
-    paddle->setPosition(sf::Vector2f(xPos, yPos));
+    paddle.setPosition(sf::Vector2f(xPos, yPos));
 }
 
 //This function draws the Player to the window that is provided
 void Player::draw(sf::RenderWindow& window){
-    window.draw(*paddle);
+    window.draw(paddle);
+}
+
+void Player::addPoint(){
+    points++;
 }

@@ -12,16 +12,15 @@
 
 class Application{
     private:
-        sf::RenderWindow* window;
-        InputHandler* inputHandler;
-        GameObject* playerOne;
-        GameObject* playerTwo;
-        GameObject* ball;
+        sf::RenderWindow window;
+        InputHandler inputHandler;
+        Player playerOne;
+        Player playerTwo;
+        Ball ball;
 
         std::vector<GameObject*> gameObjects;
     public:
-        Application(std::string title, int width, int height);
-        ~Application();
+        Application(std::string title, unsigned int width, unsigned int height);
         void run();
         void update();
         void draw();

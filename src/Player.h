@@ -13,20 +13,27 @@ enum Position{
 
 class Player : public GameObject{
     private:
+        sf::RectangleShape paddle;
         Position position;
-        int width;
-        int height;
+        unsigned int points;
+        float width;
+        float height;
         float xPos;
         float yPos;
         float xVelocity;
         float yVelocity;
     public:
-        sf::RectangleShape* paddle;
-    public:
-        Player(int width, int height, Position position);
+        Player(float width, float height, Position position);
         ~Player();
+
+        //Overriden Methods from the Game Object abstract class
         void update(InputHandler& inputHandler) override;
         void draw(sf::RenderWindow& window) override;
+
+        //Methods exclusive to the player class
+        void addPoint();
+        unsigned int getPoints() { return points;}
+        sf::RectangleShape getPaddle() {return paddle;}
     
 
         
