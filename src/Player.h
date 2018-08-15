@@ -13,7 +13,6 @@ enum Position{
 
 class Player : public GameObject{
     private:
-        sf::RectangleShape* paddle;
         Position position;
         int width;
         int height;
@@ -22,10 +21,13 @@ class Player : public GameObject{
         float xVelocity;
         float yVelocity;
     public:
+        sf::RectangleShape* paddle;
+    public:
         Player(int width, int height, Position position);
         ~Player();
         void update(InputHandler& inputHandler) override;
         void draw(sf::RenderWindow& window) override;
+    
 
         
 };

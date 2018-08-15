@@ -1,5 +1,6 @@
 #include "Application.h"
 
+
 //Constructor of the Application, creates the instantiates the window, and creates the players
 Application::Application(std::string title, int width, int height){
     window = new sf::RenderWindow(sf::VideoMode(width, height), title);
@@ -45,6 +46,21 @@ void Application::run(){
 //This function updates all of the positions of the game using input
 void Application::update(){
     inputHandler->input();
+
+    //Checks to see if there are any collisions with Player One
+    if(((Ball*)ball)->ball->getGlobalBounds()
+        .intersects(((Player*)playerOne)->paddle->getGlobalBounds())){
+            
+            ((Ball*)ball)->setCollision(true);      
+    }
+    //Checks to see if there are any collisions with Player Two
+    if(((Ball*)ball)->ball->getGlobalBounds()
+        .intersects(((Player*)playerTwo)->paddle->getGlobalBounds())){
+            
+            ((Ball*)ball)->setCollision(true);      
+    }
+
+
     for(int i = 0; i < gameObjects.size(); i++){
         gameObjects[i]->update(*inputHandler);
     }

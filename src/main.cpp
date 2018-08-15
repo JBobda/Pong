@@ -6,4 +6,5 @@ const int HEIGHT = WIDTH * 9 / 16;
 int main(){
     Application* pong = new Application("Pong - The game", WIDTH, HEIGHT);
     pong->run();
+    delete pong;
 }

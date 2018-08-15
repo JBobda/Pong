@@ -7,7 +7,7 @@
 
 class Ball : public GameObject{
     private:
-        sf::RectangleShape* ball;
+        bool collided;
         int width;
         int height;
         float xPos;
@@ -15,11 +15,18 @@ class Ball : public GameObject{
         float xVelocity;
         float yVelocity;
     public:
+        sf::RectangleShape* ball;
+    public:
         Ball(int width, int height);
         ~Ball();
+        //Overriden methods from the Game Object class
         void update(InputHandler& inputHandler) override;
         void draw(sf::RenderWindow& window) override;
+
+        //Ball Specific Methods
         bool inBounds(float start, float max, float add, float min);
+        void setCollision(bool collision) { collided = collision; }
+        bool hasCollided(){ return collided;}
         
 
 };
