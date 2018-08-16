@@ -12,9 +12,11 @@ class Score{
         std::vector<Player*> players;
         uint playerOneScore;
         uint playerTwoScore;
+        bool scoreUpdated;
     public:
         Score(Player& playerOne, Player& playerTwo);
-        void keepScore(Ball& ball);
+        void update(Ball& ball);
+        void display();
 
 };
 

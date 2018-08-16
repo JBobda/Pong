@@ -53,7 +53,9 @@ void Application::update(){
     for(int i = 0; i < gameObjects.size(); i++){
         gameObjects[i]->update(inputHandler);
     }
-    score.keepScore(ball);
+
+    //Updates the Score
+    score.update(ball);
 
 }
 
@@ -62,5 +64,8 @@ void Application::draw(){
     for(int i = 0; i < gameObjects.size(); i++){
         gameObjects[i]->draw(window);
     }
+    
+    //Displays the Score
+    score.display();
 }
 
