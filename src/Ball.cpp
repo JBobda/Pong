@@ -1,4 +1,5 @@
 #include "Ball.h"
+#include <iostream>
 
 Ball::Ball(float width, float height)
     :ball({width, height}){
@@ -17,13 +18,8 @@ Ball::Ball(float width, float height)
 Ball::~Ball(){}
 
 void Ball::update(InputHandler& inputHandler){
-    /* SCORING SYSTEM
     //TODO
-    if(!inBounds(xPos, 1000 - width, xVelocity, 0)){
-        if(xPos > 500) 
-        if(xPos < 500)
-    }
-    */
+    
     if(hasCollided()){    
         //Handles the acceleration of the ball in the x direction   
         if(xVelocity < 0) xVelocity -= 0.01f;    

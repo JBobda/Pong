@@ -1,11 +1,14 @@
 #include "Player.h"
-#include <iostream>
+
 //This is the constructor that creates the players and positions them
 Player::Player(float width, float height, Position position)
     :paddle({width, height}){
+
     this->position = position;
     this->width = width;
     this->height = height;
+
+    points = 0;
     xVelocity = 0.65f;
     yVelocity = 0.65f;
 

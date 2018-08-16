@@ -4,6 +4,7 @@
 #include <SFML/Graphics.hpp>
 
 #include "GameObject.h"
+#include "Player.h"
 
 class Ball : public GameObject{
     private:
@@ -25,8 +26,14 @@ class Ball : public GameObject{
 
         //Ball Specific Methods
         bool inBounds(float start, float max, float add, float min);
-        void setCollision(bool collision) { collided = collision; }
         bool hasCollided(){ return collided;}
+
+        void setCollision(bool collision) { collided = collision; }
+        void setPosition(float xPos, float yPos){ this->xPos = xPos; this->yPos = yPos;}
+
+        sf::Vector2f getPosition() {return sf::Vector2f{xPos, yPos}; }
+        sf::Vector2f getVelocity() { return sf::Vector2f{xVelocity, yVelocity}; }
+        
         sf::RectangleShape getBall() {return ball;}
         
 

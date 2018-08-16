@@ -9,6 +9,7 @@
 #include "InputHandler.h"
 #include "Ball.h"
 #include "GameObject.h"
+#include "Score.h"
 
 class Application{
     private:
@@ -17,6 +18,7 @@ class Application{
         Player playerOne;
         Player playerTwo;
         Ball ball;
+        Score score;
 
         std::vector<GameObject*> gameObjects;
     public:

@@ -1,11 +1,13 @@
 #include "Application.h"
+#include <iostream>
 
 //Constructor of the Application, creates the instantiates the window, and creates the players
 Application::Application(std::string title, unsigned int width, unsigned int height)
     :window({width, height}, title)
     ,playerOne(20, 100, Position::LEFT)
     ,playerTwo(20, 100, Position::RIGHT)
-    ,ball(20,20){
+    ,ball(20,20)
+    ,score(playerOne, playerTwo){
 
     //Centers the window
     window.setPosition(
@@ -51,6 +53,8 @@ void Application::update(){
     for(int i = 0; i < gameObjects.size(); i++){
         gameObjects[i]->update(inputHandler);
     }
+    score.keepScore(ball);
+
 }
 
 //This function draws objects to the screen
