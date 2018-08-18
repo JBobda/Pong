@@ -20,9 +20,11 @@ class Application{
         Ball ball;
         Score score;
 
+        float UPS;
+
         std::vector<GameObject*> gameObjects;
     public:
-        Application(std::string title, unsigned int width, unsigned int height);
+        Application(std::string title, unsigned int width, unsigned int height, float ups);
         void run();
         void update();
         void draw();

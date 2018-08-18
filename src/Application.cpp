@@ -1,13 +1,14 @@
 #include "Application.h"
+
 #include <iostream>
 
 //Constructor of the Application, creates the instantiates the window, and creates the players
-Application::Application(std::string title, unsigned int width, unsigned int height)
+Application::Application(std::string title, unsigned int width, unsigned int height, float updates)
     :window({width, height}, title)
     ,playerOne(20, 100, Position::LEFT)
     ,playerTwo(20, 100, Position::RIGHT)
     ,ball(20,20)
-    ,score(playerOne, playerTwo){
+    ,score(playerOne, playerTwo), UPS(updates){
 
     //Centers the window
     window.setPosition(
@@ -24,15 +25,47 @@ Application::Application(std::string title, unsigned int width, unsigned int hei
 
 //The main game loop of the program when this function exits, the program ends
 void Application::run(){
+    //Setup for the Game loop, fixing the updates per second to 60
+    sf::Clock timer;
+    sf::Clock clock;
+    sf::Time accumulator = sf::Time::Zero;
+    sf::Time ups = sf::seconds(1.f/UPS);
+    int updates = 0;
+    int frames = 0;
+    
+    sf::Time timing = timer.restart();
+    clock.restart();
+
+    //Main game loop that controls the game
     while(window.isOpen()){
+        //Polls for Events
         sf::Event event;
         while(window.pollEvent(event)){
             if(event.type == sf::Event::Closed) window.close();  
         }
-        update();
+        
+        //Updates every 1/60 of a second
+        while(accumulator >= ups){
+            accumulator -= ups;
+            update();
+            updates++;
+        }
+
+        //Rendering to the window
         window.clear();
         draw();
+        frames++;
         window.display();
+        
+        //Counts the Frames and Updates per second
+        if((timer.getElapsedTime() - timing).asSeconds() >= 1){
+            timing += sf::seconds(1);
+            std::cout << "UPS: " << updates << " | FPS: " << frames << "\n";
+            updates = 0;
+            frames = 0;
+        }
+
+        accumulator += clock.restart();
     }
 }
 

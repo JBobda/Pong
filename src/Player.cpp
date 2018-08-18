@@ -9,8 +9,8 @@ Player::Player(float width, float height, Position position)
     this->height = height;
 
     points = 0;
-    xVelocity = 0.65f;
-    yVelocity = 0.65f;
+    xVelocity = 6.f;
+    yVelocity = 6.f;
 
     if(position == Position::LEFT){
         xPos = 0;

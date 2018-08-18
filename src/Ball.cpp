@@ -11,8 +11,8 @@ Ball::Ball(float width, float height)
     yPos = ((1000*9/16)/2) - (height/2);
     ball.setPosition(sf::Vector2f(xPos, yPos));
 
-    xVelocity = 0.15f;
-    yVelocity = 0.15f;
+    xVelocity = 2.f;
+    yVelocity = 2.f;
 }
 
 Ball::~Ball(){}
@@ -22,8 +22,8 @@ void Ball::update(InputHandler& inputHandler){
     
     if(hasCollided()){    
         //Handles the acceleration of the ball in the x direction   
-        if(xVelocity < 0) xVelocity -= 0.01f;    
-        else xVelocity += 0.01f;
+        if(xVelocity < 0) xVelocity -= 0.35f;    
+        else xVelocity += 0.35f;
         //Handles the bouncing of the ball in the x direction
         xVelocity *= -1;
         setCollision(false);
@@ -37,8 +37,8 @@ void Ball::update(InputHandler& inputHandler){
     if(inBounds(yPos, 1000*9/16-height, yVelocity, 0)) yVelocity *= 1;
     else{
         //Handles the acceleration of the ball in the y direction
-        if(yVelocity < 0) yVelocity -= 0.01f;
-        else yVelocity += 0.01f; 
+        if(yVelocity < 0) yVelocity -= 0.35f;
+        else yVelocity += 0.35f; 
         //Handles the bouncing of the ball in the y direction
         yVelocity *= -1;
     }
