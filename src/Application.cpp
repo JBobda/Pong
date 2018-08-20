@@ -99,6 +99,6 @@ void Application::draw(){
     }
     
     //Displays the Score
-    score.display();
+    score.display(window);
 }
 
