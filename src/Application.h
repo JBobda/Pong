@@ -27,7 +27,9 @@ class Application{
         Application(std::string title, unsigned int width, unsigned int height, float ups);
         void run();
         void update();
+        void clear();
         void draw();
+        void display();
 };
 
 #endif //APPLICATION_H

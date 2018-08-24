@@ -14,12 +14,15 @@ class Score{
         sf::Font font;
         std::stringstream sstream;
         std::vector<Player*> players;
+
+        bool winnerExists;
         uint playerOneScore;
         uint playerTwoScore;
     public:
         Score(Player& playerOne, Player& playerTwo);
         void update(Ball& ball);
-        void display(sf::RenderWindow& window);
+        void draw(sf::RenderWindow& window);
+        void display();
 
 };
 

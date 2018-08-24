@@ -3,16 +3,17 @@
 
 Ball::Ball(float width, float height)
     :ball({width, height}){
-
+    srand(time(NULL));
     this->width = width;
     this->height = height;
     collided = false;
     xPos = (1000/2) - (width/2);
     yPos = ((1000*9/16)/2) - (height/2);
     ball.setPosition(sf::Vector2f(xPos, yPos));
+    sf::Vector2i direction = generateDirection();
 
-    xVelocity = 2.f;
-    yVelocity = 2.f;
+    xVelocity = 2.f * direction.x;
+    yVelocity = 2.f * direction.y;
 }
 
 Ball::~Ball(){}
@@ -56,5 +57,19 @@ bool Ball::inBounds(float start, float max, float add, float min){
     if(start + add < min) return false;
 
     return true;
+}
+
+sf::Vector2i Ball::generateDirection(){
+    //Create random x Direction for the velocity
+    int xMultiplyer = rand() % 2;
+    if(xMultiplyer == 0) xMultiplyer = 1;
+    else xMultiplyer = -1;
+
+    //Create random y Direction for the velocity
+    int yMultiplyer = rand() % 2;
+    if(yMultiplyer == 0) yMultiplyer = 1;
+    else yMultiplyer = -1;
+
+    return sf::Vector2i{xMultiplyer, yMultiplyer};
 }
 

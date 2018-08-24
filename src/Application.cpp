@@ -52,10 +52,10 @@ void Application::run(){
         }
 
         //Rendering to the window
-        window.clear();
+        clear();
         draw();
         frames++;
-        window.display();
+        display();
         
         //Counts the Frames and Updates per second
         if((timer.getElapsedTime() - timing).asSeconds() >= 1){
@@ -83,7 +83,7 @@ void Application::update(){
     }
 
 
-    for(int i = 0; i < gameObjects.size(); i++){
+    for(uint i = 0; i < gameObjects.size(); i++){
         gameObjects[i]->update(inputHandler);
     }
 
@@ -92,13 +92,22 @@ void Application::update(){
 
 }
 
+void Application::clear(){
+    window.clear();
+}
+
 //This function draws objects to the screen
 void Application::draw(){
-    for(int i = 0; i < gameObjects.size(); i++){
+    for(uint i = 0; i < gameObjects.size(); i++){
         gameObjects[i]->draw(window);
     }
     
     //Displays the Score
-    score.display(window);
+    score.draw(window);
+}
+
+void Application::display(){
+    window.display();
+    score.display();
 }
 
